@@ -1,833 +1,966 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolyo Sitesi</title>
-    <!-- Bootstrap CSS -->
-    <link href="bootstrap-5.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    
-    <!-- Internal CSS -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bora Çatalbaş</title>
+    <link href="bootstrap-5.3.6-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+    />
     <style>
-        /* Variables */
-        :root {
-            --primary: #0CFC95;
-            --dark: rgb(7, 12, 16);
-            --dark-secondary: rgb(10, 56, 89);
-            --white: #ffffff;
-            --light-gray: #f8f9fa;
-            --text-light: #e6e6e6;
-        }
+      :root {
+        --primary: #0cfc95;
+        --dark: rgb(7, 12, 16);
+        --dark-secondary: rgb(10, 56, 89);
+        --white: #ffffff;
+        --light-gray: #f8f9fa;
+        --text-light: #e6e6e6;
+      }
 
-        /* Core Styles */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(147deg, var(--dark) 23%, var(--dark-secondary) 100%);
-            color: var(--text-light);
-            overflow-x: hidden;
-        }
+      /* Core Styles */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(
+          147deg,
+          var(--dark) 23%,
+          var(--dark-secondary) 100%
+        );
+        color: var(--text-light);
+        overflow-x: hidden;
+      }
 
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 70px;
-        }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 70px;
+      }
 
-        section {
-            padding: 70px 0;
-            scroll-margin-top: 70px;
-            opacity: 0.9;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
+      section {
+        padding: 70px 0;
+        scroll-margin-top: 70px;
+        opacity: 0.9;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
 
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-        /* Colors & Backgrounds */
-        .bg-dark { background-color: var(--dark) !important; }
-        .bg-light { 
-            background-color: rgba(255, 255, 255, 0.05) !important; 
-            backdrop-filter: blur(10px);
-        }
-        .bg-primary { 
-            background-color: var(--primary) !important; 
-            color: var(--dark) !important;
-        }
-        .text-primary { color: var(--primary) !important; }
+      /* Colors & Backgrounds */
+      .bg-dark {
+        background-color: var(--dark) !important;
+      }
+      .bg-light {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        backdrop-filter: blur(10px);
+      }
+      .bg-primary {
+        background-color: var(--primary) !important;
+        color: var(--dark) !important;
+      }
+      .text-primary {
+        color: var(--primary) !important;
+      }
 
-        /* Buttons */
-        .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
-            color: var(--dark);
-        }
-        .btn-primary:hover {
-            background-color: #0be085;
-            border-color: #0be085;
-        }
-        .btn-outline-dark {
-            border-color: var(--white);
-            color: var(--white);
-        }
-        .btn-outline-dark:hover {
-            background-color: var(--white);
-            color: var(--dark);
-        }
+      /* Buttons */
+      .btn-primary {
+        background-color: var(--primary);
+        border-color: var(--primary);
+        color: var(--dark);
+      }
+      .btn-primary:hover {
+        background-color: #0be085;
+        border-color: #0be085;
+      }
+      .btn-outline-dark {
+        border-color: var(--white);
+        color: var(--white);
+      }
+      .btn-outline-dark:hover {
+        background-color: var(--white);
+        color: var(--dark);
+      }
 
-        /* Section Titles */
-        .section-title {
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 15px;
-            color: var(--white);
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 70px;
-            height: 3px;
-            background-color: var(--primary);
-        }
+      /* Section Titles */
+      .section-title {
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 15px;
+        color: var(--white);
+      }
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70px;
+        height: 3px;
+        background-color: var(--primary);
+      }
 
-        /* Hero Section */
+      /* Hero Section */
+      #hero {
+        min-height: 100vh;
+        padding-top: 120px;
+        padding-bottom: 50px;
+      }
+      .hero-image {
+        max-width: 400px;
+        border: 8px solid rgba(255, 255, 255, 0.2);
+        transition: transform 0.5s ease;
+        filter: drop-shadow(0 0 20px rgba(12, 252, 149, 0.3));
+      }
+      .hero-image:hover {
+        transform: scale(1.05);
+      }
+      .hero-image-container {
+        position: relative;
+      }
+      .hero-image-container::before {
+        content: "";
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        border: 3px dashed var(--primary);
+        border-radius: 50%;
+        top: 10%;
+        left: 10%;
+        animation: rotate 30s linear infinite;
+      }
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Cards */
+      .service-card,
+      .project-card {
+        transition: transform 0.3s ease;
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .service-card:hover,
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(12, 252, 149, 0.2);
+      }      .project-card img {
+        transition: transform 0.5s ease;
+        height: 250px;
+        object-fit: cover;
+        width: 100%;
+      }
+      .project-card:hover img {
+        transform: scale(1.1);
+      }
+      .card-body {
+        color: var(--text-light);
+      }
+      .card-title {
+        color: var(--white);
+      }
+
+      /* Service Icons */
+      .service-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: rgba(12, 252, 149, 0.1);
+      }
+
+  
+      .contact-info {
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+      }
+      .contact-info i {
+        font-size: 1.5rem;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(12, 252, 149, 0.1);
+        border-radius: 50%;
+        margin-right: 15px;
+        color: var(--primary);
+      }
+
+    
+      .social-icons a {
+        font-size: 1.5rem;
+        color: var(--primary);
+        transition: transform 0.3s ease;
+        display: inline-flex;
+      }
+      .social-icons a:hover {
+        transform: scale(1.2);
+        color: var(--white);
+      }
+
+      /* Progress Bars */
+      .progress {
+        height: 10px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .progress-bar {
+        background-color: var(--primary);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(12, 252, 149, 0.5);
+      }
+
+      /* Footer */
+      footer {
+        background-color: rgba(7, 12, 16, 0.9) !important;
+        border-top: 1px solid rgba(12, 252, 149, 0.2);
+      }
+      footer a {
+        text-decoration: none;
+        transition: all 0.3s ease;
+        color: var(--primary) !important;
+      }
+      footer a:hover {
+        color: var(--white) !important;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 992px) {
         #hero {
-            min-height: 100vh;
-            padding-top: 120px;
-            padding-bottom: 50px;
+          min-height: auto;
+          padding-top: 100px;
         }
         .hero-image {
-            max-width: 400px;
-            border: 8px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.5s ease;
-            filter: drop-shadow(0 0 20px rgba(12, 252, 149, 0.3));
+          max-width: 300px;
+          margin-top: 30px;
         }
-        .hero-image:hover {
-            transform: scale(1.05);
+        section {
+          padding: 60px 0;
         }
-        .hero-image-container {
-            position: relative;
-        }
-        .hero-image-container::before {
-            content: '';
-            position: absolute;
-            width: 80%;
-            height: 80%;
-            border: 3px dashed var(--primary);
-            border-radius: 50%;
-            top: 10%;
-            left: 10%;
-            animation: rotate 30s linear infinite;
-        }
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+      }
 
-        /* Cards */
-        .service-card, .project-card {
-            transition: transform 0.3s ease;
-            border-radius: 10px;
-            overflow: hidden;
-            background-color: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+      @media (max-width: 768px) {
+        .section-title {
+          font-size: 1.8rem;
         }
-        .service-card:hover, .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(12, 252, 149, 0.2);
+        .hero-image {
+          max-width: 250px;
         }
-        .project-card img {
-            transition: transform 0.5s ease;
-        }
-        .project-card:hover img {
-            transform: scale(1.1);
-        }
-        .card-body {
-            color: var(--text-light);
-        }
-        .card-title {
-            color: var(--white);
-        }
-        
-        /* Service Icons */
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background-color: rgba(12, 252, 149, 0.1);
-        }
+      }
 
-        /* Contact */
-        .contact-info {
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
+      @media (max-width: 576px) {
+        #hero {
+          text-align: center;
+          padding-top: 90px;
         }
-        .contact-info i {
-            font-size: 1.5rem;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(12, 252, 149, 0.1);
-            border-radius: 50%;
-            margin-right: 15px;
-            color: var(--primary);
+        .hero-image {
+          max-width: 200px;
         }
-
-        /* Social Icons */
-        .social-icons a {
-            font-size: 1.5rem;
-            color: var(--primary);
-            transition: transform 0.3s ease;
-            display: inline-flex;
+        .social-icons {
+          justify-content: center;
         }
-        .social-icons a:hover {
-            transform: scale(1.2);
-            color: var(--white);
+        section {
+          padding: 50px 0;
         }
-
-        /* Progress Bars */
-        .progress {
-            height: 10px;
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        .progress-bar {
-            background-color: var(--primary);
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(12, 252, 149, 0.5);
-        }
-
-        /* Footer */
-        footer {
-            background-color: rgba(7, 12, 16, 0.9) !important;
-            border-top: 1px solid rgba(12, 252, 149, 0.2);
-        }
-        footer a {
-            text-decoration: none;
-            transition: all 0.3s ease;
-            color: var(--primary) !important;
-        }
-        footer a:hover {
-            color: var(--white) !important;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 992px) {
-            #hero {
-                min-height: auto;
-                padding-top: 100px;
-            }
-            .hero-image {
-                max-width: 300px;
-                margin-top: 30px;
-            }
-            section {
-                padding: 60px 0;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 1.8rem;
-            }
-            .hero-image {
-                max-width: 250px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            #hero {
-                text-align: center;
-                padding-top: 90px;
-            }
-            .hero-image {
-                max-width: 200px;
-            }
-            .social-icons {
-                justify-content: center;
-            }
-            section {
-                padding: 50px 0;
-            }
-        }
+      }
     </style>
-</head>
-<body>
-    <!-- Navigation -->
+  </head>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#hero">
-                <img src="bora.png" alt="Logo" width="80" height="80"> 
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#hero">Ana Sayfa</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">Hakkımda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projeler</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">İletişim</a>
-                    </li>
-                </ul>
-            </div>
+      <div class="container">
+        <a class="navbar-brand" href="#hero">
+          <img src="bora.png" alt="Logo" width="80" height="80" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#hero">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About Me</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
         </div>
-    </nav>   
+      </div>
+    </nav>
 
     <!-- Hero Section -->
     <section id="hero" class="d-flex align-items-center">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- Text Section -->
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <h1 class="display-4 fw-bold">Merhaba, ben<br><span class="text-primary">Bora Çatalbaş</span></h1>
-                    <h2 class="lead mb-4">Frontend React Developer</h2>
-                    <p class="mb-5">
-                        Modern, hızlı ve kullanıcı odaklı arayüzler geliştiriyorum. Kodun sadece çalışmasını değil, aynı zamanda deneyim yaşatmasını önemsiyorum.
-                    </p>
-                    <div class="d-flex gap-3 flex-wrap">
-                        <a href="#projects" class="btn btn-primary btn-lg">Projelerimi İncele</a>
-                        <a href="#contact" class="btn btn-outline-dark btn-lg">Benimle İletişime Geç</a>
-                    </div>
-                    <div class="mt-4 social-icons">
-                        <a href="#" class="me-3" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="me-3" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" class="me-3" aria-label="GitHub"><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
-
-                <!-- Image Section -->
-                <div class="col-lg-6 text-center">
-                    <div class="hero-image-container">
-                        <img src="1.jpg" alt="Bora Çatalbaş profil fotoğrafı" class="img-fluid rounded-circle hero-image shadow-lg">
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- Text Section -->
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <h1 class="display-4 fw-bold">
+              Hello I'm<br /><span class="text-primary">Bora Catalbas</span>
+            </h1>
+            <h2 class="lead mb-4">Junior Frontend React Developer</h2>
+            <p class="mb-5">
+              I develop modern, fast and user-oriented interfaces. I care about
+              the code not only working but also providing an experience.
+            </p>
+            <div class="d-flex gap-3 flex-wrap">
+              <a href="#projects" class="btn btn-primary btn-lg">My Projects</a>
+              <a href="#contact" class="btn btn-outline-dark btn-lg"
+                >Contact Me</a
+              >
             </div>
+            <div class="mt-4 social-icons">
+              <a
+                href="https://www.instagram.com/boracatalbass/"
+                class="me-3"
+                aria-label="Instagram"
+                ><i class="bi bi-instagram"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/bora-çatalbaş-32888a219/"
+                class="me-3"
+                aria-label="LinkedIn"
+                ><i class="bi bi-linkedin"></i
+              ></a>
+              <a
+                href="https://github.com/boracatalbas"
+                class="me-3"
+                aria-label="GitHub"
+                ><i class="bi bi-github"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Image Section -->
+          <div class="col-lg-6 text-center">
+            <div class="hero-image-container">
+              <img
+                src="1.jpg"
+                alt="Bora Çatalbaş profil fotoğrafı"
+                class="img-fluid rounded-circle hero-image shadow-lg"
+              />
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Services Section -->
     <section id="services" class="py-5 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
-                    <h2 class="section-title fw-bold">Hizmetlerim</h2>
-                    <p class="lead">Size sunabileceğim hizmetler</p>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card service-card h-100 border-0 shadow-sm">
-                        <div class="card-body text-center p-4">
-                            <div class="service-icon mb-4">
-                                <i class="bi bi-code-square fs-1 text-primary"></i>
-                            </div>
-                            <h4 class="card-title">Web Geliştirme</h4>
-                            <p class="card-text">Modern ve duyarlı web siteleri geliştiriyorum. HTML, CSS, JavaScript ve popüler framework'ler kullanıyorum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card service-card h-100 border-0 shadow-sm">
-                        <div class="card-body text-center p-4">
-                            <div class="service-icon mb-4">
-                                <i class="bi bi-palette fs-1 text-primary"></i>
-                            </div>
-                            <h4 class="card-title">UI/UX Tasarım</h4>
-                            <p class="card-text">Kullanıcı dostu ve estetik arayüzler tasarlıyorum. Kullanıcı deneyimini en üst düzeye çıkarmak için çalışıyorum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card service-card h-100 border-0 shadow-sm">
-                        <div class="card-body text-center p-4">
-                            <div class="service-icon mb-4">
-                                <i class="bi bi-phone fs-1 text-primary"></i>
-                            </div>
-                            <h4 class="card-title">Mobil Uyumlu Tasarım</h4>
-                            <p class="card-text">Tüm cihazlarda mükemmel çalışan responsive web siteleri oluşturuyorum. Bootstrap ve diğer araçları kullanıyorum.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center mb-5">
+            <h2 class="section-title fw-bold">My Services</h2>
+          </div>
         </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card service-card h-100 border-0 shadow-sm">
+              <div class="card-body text-center p-4">
+                <div class="service-icon mb-4">
+                  <i class="bi bi-code-slash fs-1 text-primary"></i>
+                </div>
+                <h4 class="card-title">Frontend Development</h4>
+                <p class="card-text">
+                  I build modern, responsive, and user-friendly websites using
+                  React, Next.js, and Tailwind CSS. My focus is on delivering
+                  fast and scalable solutions.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card service-card h-100 border-0 shadow-sm">
+              <div class="card-body text-center p-4">
+                <div class="service-icon mb-4">
+                  <i class="bi bi-palette fs-1 text-primary"></i>
+                </div>
+                <h4 class="card-title">UI/UX Design</h4>
+                <p class="card-text">
+                  I design intuitive and visually appealing interfaces that
+                  enhance user experience. I prioritize usability and aesthetics
+                  in every project.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card service-card h-100 border-0 shadow-sm">
+              <div class="card-body text-center p-4">
+                <div class="service-icon mb-4">
+                  <i class="bi bi-phone fs-1 text-primary"></i>
+                </div>
+                <h4 class="card-title">Responsive Design</h4>
+                <p class="card-text">
+                  I create websites that look and perform beautifully on all
+                  devices. Leveraging Tailwind CSS and modern frameworks, I
+                  ensure seamless responsiveness.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- About Me Section -->
     <section id="about" class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
-                    <h2 class="section-title">Hakkımda</h2>
-                    <p class="lead">Beni daha yakından tanıyın</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="https://via.placeholder.com/600x600" alt="Profile" class="img-fluid rounded shadow-lg">
-                </div>
-                <div class="col-lg-6">
-                    <h2 class="section-title text-start">Benim Hikayem</h2>
-                    <p class="lead mb-4">Ben Bora, Türkiye merkezli bir web geliştiriciyim.</p>
-                    <p class="mb-4">5 yıllık deneyimimle, kullanıcı odaklı web siteleri ve uygulamalar geliştirmekteyim. Her projeyi bir hikaye anlatma fırsatı olarak görüyor ve her müşteri için benzersiz ve etkileyici çözümler üretmeye çalışıyorum.</p>
-                    
-                    <p class="mb-4">Yaratıcı düşünce yapısı ve teknik becerilerimi birleştirerek, kullanıcı deneyimini en üst düzeye çıkaran, estetik ve işlevsel web siteleri tasarlamak benim tutkumdur. Her zaman en son teknoloji ve trendleri takip ediyor, sürekli kendimi geliştiriyorum.</p>
-
-                    <div class="mb-4">
-                        <div class="row g-md-3">
-                            <div class="col-md-6 mb-3">
-                                <div class="d-flex align-items-center">
-                                    <i class="bi bi-check-circle-fill text-primary me-2 fs-5"></i>
-                                    <span>Web Geliştirme</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <div class="d-flex align-items-center">
-                                    <i class="bi bi-check-circle-fill text-primary me-2 fs-5"></i>
-                                    <span>UI/UX Tasarım</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <div class="d-flex align-items-center">
-                                    <i class="bi bi-check-circle-fill text-primary me-2 fs-5"></i>
-                                    <span>Responsive Tasarım</span>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <div class="d-flex align-items-center">
-                                    <i class="bi bi-check-circle-fill text-primary me-2 fs-5"></i>
-                                    <span>SEO Optimizasyonu</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center mb-5">
+            <h2 class="section-title">About Me</h2>
+          </div>
         </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <p class="lead mb-4">
+              I am Bora, a passionate frontend developer with approximately 3
+              years of interest in the field. Over time, I have worked on
+              various projects and successfully completed them. I am currently a
+              third-year Software Engineering student at Istanbul Aydın
+              University, and I am highly dedicated to my field.
+            </p>
+            <p class="mb-4">
+              Combining creative thinking and technical skills, I am passionate
+              about designing aesthetic and functional websites that maximize
+              user experience. I always stay updated with the latest
+              technologies and trends, continuously improving myself.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Skills Section -->
     <section class="py-5 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
-                    <h2 class="section-title">Becerilerim</h2>
-                    <p class="lead">Teknik becerilerim ve uzmanlık alanlarım</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">                    <div class="mb-4">
-                        <div class="d-flex justify-content-between mb-2">
-                            <p class="mb-0 fw-bold">HTML/CSS</p>
-                            <p class="mb-0">95%</p>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 95%" aria-label="HTML/CSS skill level: 95%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <div class="d-flex justify-content-between mb-2">
-                            <p class="mb-0 fw-bold">JavaScript</p>
-                            <p class="mb-0">85%</p>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 85%" aria-label="JavaScript skill level: 85%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <div class="d-flex justify-content-between mb-2">
-                            <p class="mb-0 fw-bold">Bootstrap</p>
-                            <p class="mb-0">90%</p>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 90%" aria-label="Bootstrap skill level: 90%"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6">                    <div class="mb-4">
-                        <div class="d-flex justify-content-between mb-2">
-                            <p class="mb-0 fw-bold">React</p>
-                            <p class="mb-0">80%</p>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 80%" aria-label="React skill level: 80%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <div class="d-flex justify-content-between mb-2">
-                            <p class="mb-0 fw-bold">UI/UX Tasarım</p>
-                            <p class="mb-0">85%</p>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 85%" aria-label="UI/UX Tasarım skill level: 85%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <div class="d-flex justify-content-between mb-2">
-                            <p class="mb-0 fw-bold">Responsive Tasarım</p>
-                            <p class="mb-0">90%</p>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 90%" aria-label="Responsive Tasarım skill level: 90%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center mb-5">
+            <h2 class="section-title">My Skills</h2>
+            <p class="lead">Technical skills and areas of expertise</p>
+          </div>
         </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-4">
+              <div class="d-flex justify-content-between mb-2">
+                <p class="mb-0 fw-bold">HTML/CSS</p>
+                <p class="mb-0">90%</p>
+              </div>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  style="width: 90%"
+                  aria-label="HTML/CSS skill level: 90%"
+                ></div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <div class="d-flex justify-content-between mb-2">
+                <p class="mb-0 fw-bold">JavaScript</p>
+                <p class="mb-0">80%</p>
+              </div>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  style="width: 80%"
+                  aria-label="JavaScript skill level: 80%"
+                ></div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <div class="d-flex justify-content-between mb-2">
+                <p class="mb-0 fw-bold">TypeScript</p>
+                <p class="mb-0">50%</p>
+              </div>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  style="width: 50%"
+                  aria-label="TypeScript skill level: 50%"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="mb-4">
+              <div class="d-flex justify-content-between mb-2">
+                <p class="mb-0 fw-bold">React.js</p>
+                <p class="mb-0">90%</p>
+              </div>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  style="width: 90%"
+                  aria-label="React.js skill level: 90%"
+                ></div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <div class="d-flex justify-content-between mb-2">
+                <p class="mb-0 fw-bold">Next.js</p>
+                <p class="mb-0">70%</p>
+              </div>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  style="width: 70%"
+                  aria-label="Next.js skill level: 70%"
+                ></div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <div class="d-flex justify-content-between mb-2">
+                <p class="mb-0 fw-bold">Tailwind CSS</p>
+                <p class="mb-0">90%</p>
+              </div>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  style="width: 90%"
+                  aria-label="Tailwind CSS skill level: 90%"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
-                    <h2 class="section-title">Projeler</h2>
-                    <p class="lead">Tamamladığım çalışmalarıma göz atın</p>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center mb-5">
+            <h2 class="section-title">Projects</h2>
+            <p class="lead">Take a look at the projects I have completed</p>
+          </div>
+        </div>
+
+
+        <div class="row g-4">
+
+          <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="web">
+            <div class="card project-card h-100">
+              <div class="overflow-hidden">
+                <img
+                  src="p1.jpg"
+                  class="card-img-top"
+                  alt="E-Commerce Website"
+                />
+              </div>
+              <div class="card-body">
+                <span class="badge bg-primary mb-2">Website</span>
+                <h5 class="card-title">Stork</h5>
+                <p class="card-text">
+                  A fully responsive e-commerce website for Macedonia, featuring
+                  a product catalog, shopping cart, and payment system
+                  integration. I'm currently working on this website with
+                  professional development team we will launch it in 2025.
+                </p>
+                <div class="d-flex gap-2 flex-wrap">
+                  <span class="badge bg-white text-dark">React</span>
+                  <span class="badge bg-white text-dark">JavaScript</span>
+                  <span class="badge bg-white text-dark">TypeScript</span>
+                  <span class="badge bg-white text-dark">TailwindCSS</span>
+                  <span class="badge bg-white text-dark">NextJS</span>
+                  <span class="badge bg-white text-dark">Axios</span>
                 </div>
+              </div>
             </div>
-            
-            <div class="row">                
-                <div class="col-lg-12 text-center mb-5">
-                    <div class="d-inline-flex flex-wrap gap-2">
-                        <button type="button" class="btn btn-outline-primary active filter-btn" data-filter="all">Hepsi</button>
-                        <button type="button" class="btn btn-outline-primary filter-btn" data-filter="web">Web Siteleri</button>
-                        <button type="button" class="btn btn-outline-primary filter-btn" data-filter="app">Uygulamalar</button>
-                        <button type="button" class="btn btn-outline-primary filter-btn" data-filter="design">UI/UX</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="web">
-                    <div class="card project-card h-100">
-                        <div class="overflow-hidden">
-                            <img src="https://via.placeholder.com/600x400" class="card-img-top" alt="Proje 1">
-                        </div>
-                        <div class="card-body">
-                            <span class="badge bg-primary mb-2">Web Sitesi</span>
-                            <h5 class="card-title">E-Ticaret Platformu</h5>
-                            <p class="card-text">Tamamen responsive bir e-ticaret sitesi. Ürün kataloğu, sepet ve ödeme sistemleri entegrasyonu.</p>
-                            <div class="d-flex gap-2 flex-wrap">
-                                <span class="badge bg-light text-dark">HTML5</span>
-                                <span class="badge bg-light text-dark">CSS3</span>
-                                <span class="badge bg-light text-dark">JavaScript</span>
-                                <span class="badge bg-light text-dark">Bootstrap</span>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white border-0 pt-0">
-                            <a href="#" class="btn btn-primary">Detayları Gör</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="app">
-                    <div class="card project-card h-100">
-                        <div class="overflow-hidden">
-                            <img src="https://via.placeholder.com/600x400" class="card-img-top" alt="Proje 2">
-                        </div>
-                        <div class="card-body">
-                            <span class="badge bg-primary mb-2">Uygulama</span>
-                            <h5 class="card-title">Task Manager Uygulaması</h5>
-                            <p class="card-text">Görevleri yönetmek için modern bir uygulama. Sürükle-bırak özelliği ve kategori filtreleme.</p>
-                            <div class="d-flex gap-2 flex-wrap">
-                                <span class="badge bg-light text-dark">React</span>
-                                <span class="badge bg-light text-dark">Redux</span>
-                                <span class="badge bg-light text-dark">Firebase</span>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white border-0 pt-0">
-                            <a href="#" class="btn btn-primary">Detayları Gör</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="design">
-                    <div class="card project-card h-100">
-                        <div class="overflow-hidden">
-                            <img src="https://via.placeholder.com/600x400" class="card-img-top" alt="Proje 3">
-                        </div>
-                        <div class="card-body">
-                            <span class="badge bg-primary mb-2">UI/UX</span>
-                            <h5 class="card-title">Seyahat Uygulaması UI Tasarımı</h5>
-                            <p class="card-text">Bir seyahat uygulaması için modern ve kullanıcı dostu arayüz tasarımı.</p>
-                            <div class="d-flex gap-2 flex-wrap">
-                                <span class="badge bg-light text-dark">Figma</span>
-                                <span class="badge bg-light text-dark">Adobe XD</span>
-                                <span class="badge bg-light text-dark">Prototype</span>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white border-0 pt-0">
-                            <a href="#" class="btn btn-primary">Detayları Gör</a>
-                        </div>
-                    </div>
-                </div>
+          </div>
+
+  
+         <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="app">
+    <div class="card project-card h-100">
+        <div class="overflow-hidden">
+            <img
+                src="p2.png"
+                class="card-img-top"
+                alt="Professional Networking Application"
+            />
+        </div>
+        <div class="card-body">
+            <span class="badge bg-primary mb-2">Website</span>
+            <h5 class="card-title">Professional Networking App</h5>
+            <p class="card-text">
+                A LinkedIn-inspired platform for professionals to connect, share updates, and explore career opportunities. Includes profile creation, messaging, and job search features.
+            </p>
+            <div class="d-flex gap-2 flex-wrap">
+                <span class="badge bg-white text-dark">React</span>
+                <span class="badge bg-white text-dark">JavaScript</span>
+                <span class="badge bg-white text-dark">TailwindCSS</span>
+                <span class="badge bg-white text-dark">NextJS</span>
+                <span class="badge bg-white text-dark">Firebase</span>
             </div>
         </div>
-    </section>
+    </div>
+</div>      <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="app">
+    <div class="card project-card h-100">
+        <div class="overflow-hidden">
+            <img
+                src="p3.png"
+                class="card-img-top"
+                alt="AI Chatbot Application"
+            />
+        </div>
+        <div class="card-body">
+            <span class="badge bg-primary mb-2">AI Application</span>
+            <h5 class="card-title">AI Chatbot Assistant</h5>
+            <p class="card-text">
+                An intelligent chatbot application powered by AI technology. Features natural language processing, context-aware responses, and seamless user interaction. Built with modern frameworks for optimal performance.
+            </p>
+            <div class="d-flex gap-2 flex-wrap">
+                <span class="badge bg-white text-dark">React</span>
+                <span class="badge bg-white text-dark">JavaScript</span>
+                <span class="badge bg-white text-dark">Node.js</span>
+                <span class="badge bg-white text-dark">OpenAI API</span>
+                <span class="badge bg-white text-dark">Express</span></div>
+        </div>
+    </div>
+</div>
 
-    <!-- Call to Action -->
+          <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="web">
+    <div class="card project-card h-100">
+        <div class="overflow-hidden">
+            <img
+                src="p4.png"
+                class="card-img-top"
+                alt="Task Management Application"
+            />
+        </div>
+        <div class="card-body">
+            <span class="badge bg-primary mb-2">Web Application</span>
+            <h5 class="card-title">Task Management System</h5>
+            <p class="card-text">
+                A comprehensive task management application with drag-and-drop functionality, team collaboration features, and real-time updates. Includes project tracking, deadline management, and productivity analytics.
+            </p>
+            <div class="d-flex gap-2 flex-wrap">
+                <span class="badge bg-white text-dark">React</span>
+                <span class="badge bg-white text-dark">JavaScript</span>
+                  <span class="badge bg-white text-dark">CSS</span>
+        
+           
+            </div>
+        </div>
+    </div>
+</div>
+
+          <div class="col-md-6 col-lg-4 mb-4 project-item" data-category="app">
+    <div class="card project-card h-100">
+        <div class="overflow-hidden">
+            <img
+                src="p5.png"
+                class="card-img-top"
+                alt="Weather Dashboard Application"
+            />
+        </div>
+        <div class="card-body">
+            <span class="badge bg-primary mb-2">Mobile App</span>
+            <h5 class="card-title">Weather Dashboard</h5>
+            <p class="card-text">
+                A modern weather application with detailed forecasts, interactive maps, and location-based alerts. Features beautiful animations, multiple weather data sources, and offline functionality.
+            </p>
+            <div class="d-flex gap-2 flex-wrap">
+                <span class="badge bg-white text-dark">React</span>
+                <span class="badge bg-white text-dark">JavaScript</span>
+  
+            </div>
+        </div>
+    </div>
+</div>
+          </div>
+        </div>
+      </div>
+    </section>    <!-- Call to Action -->
     <section id="cta" class="py-5 bg-primary text-white">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8 mb-4 mb-lg-0">
-                    <h2 class="fw-bold">Bir projeniz mi var?</h2>
-                    <p class="lead mb-0">Hayalinizdeki web sitesini beraber hayata geçirelim.</p>
-                </div>
-                <div class="col-lg-4 text-lg-end">
-                    <a href="#contact" class="btn btn-light btn-lg">İletişime Geç</a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-8 mb-4 mb-lg-0">
+            <h2 class="fw-bold">Do you have a project?</h2>
+            <p class="lead mb-0">
+              Let's bring your dream website to life together.
+            </p>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+            <a href="#contact" class="btn btn-dark btn-lg">Get In Touch</a>
+          </div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
+      </div>
+    </section>    <!-- Contact Section -->
     <section id="contact" class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
-                    <h2 class="section-title">Benimle İletişime Geçin</h2>
-                    <p class="lead">Bir projeniz mi var? Birlikte çalışalım!</p>
-                </div>
-            </div>
-            
-            <div class="row gx-5">
-                <div class="col-lg-5 mb-5 mb-lg-0">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-4">
-                            <h3 class="mb-4">İletişim Bilgileri</h3>
-                            
-                            <div class="contact-info">
-                                <i class="bi bi-geo-alt"></i>
-                                <div>
-                                    <h5 class="mb-1">Konum</h5>
-                                    <p class="mb-0">İstanbul, Türkiye</p>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-info">
-                                <i class="bi bi-envelope"></i>
-                                <div>
-                                    <h5 class="mb-1">Email</h5>
-                                    <p class="mb-0">info@example.com</p>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-info">
-                                <i class="bi bi-telephone"></i>
-                                <div>
-                                    <h5 class="mb-1">Telefon</h5>
-                                    <p class="mb-0">+90 123 456 7890</p>
-                                </div>
-                            </div>
-                            
-                            <h4 class="mt-5 mb-3">Sosyal Medya</h4>
-                            <div class="social-icons">
-                                <a href="#" class="me-3"><i class="bi bi-facebook"></i></a>
-                                <a href="#" class="me-3"><i class="bi bi-twitter"></i></a>
-                                <a href="#" class="me-3"><i class="bi bi-instagram"></i></a>
-                                <a href="#" class="me-3"><i class="bi bi-linkedin"></i></a>
-                                <a href="#" class="me-3"><i class="bi bi-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-7">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-4">
-                            <form>
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label for="name" class="form-label">Adınız</label>
-                                        <input type="text" class="form-control bg-light" id="name" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="email" class="form-label">E-posta Adresiniz</label>
-                                        <input type="email" class="form-control bg-light" id="email" required>
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="subject" class="form-label">Konu</label>
-                                        <input type="text" class="form-control bg-light" id="subject" required>
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="message" class="form-label">Mesajınız</label>
-                                        <textarea class="form-control bg-light" id="message" rows="5" required></textarea>
-                                    </div>
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-primary px-4 py-3">Mesaj Gönder</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center mb-5">
+            <h2 class="section-title">Get In Touch With Me</h2>
+            <p class="lead">Do you have a project? Let's work together!</p>
+          </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 mb-3 mb-md-0">
-                    <h5>Portfolyo</h5>
-                    <p class="mb-0">Kullanıcı dostu ve modern web sitesi çözümleri.</p>
+        <div class="row gx-5">
+          <div class="col-lg-5 mb-5 mb-lg-0">
+            <div class="card border-0 shadow-sm bg-dark">
+              <div class="card-body p-4">
+                <h3 class="mb-4 text-white">Contact Information</h3>
+
+                <div class="contact-info">
+                  <i class="bi bi-geo-alt"></i>
+                  <div>
+                    <h5 class="mb-1 text-white">Location</h5>
+                    <p class="mb-0 text-light">Istanbul, Turkey</p>
+                  </div>
                 </div>
-                <div class="col-md-6 text-md-end">
-                    <div class="social-icons mb-3">
-                        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
-                        <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" class="text-white me-3"><i class="bi bi-github"></i></a>
-                    </div>
-                    <p class="mb-0">© 2025 Portfolyo. Tüm hakları saklıdır.</p>
+
+                <div class="contact-info">
+                  <i class="bi bi-envelope"></i>
+                  <div>
+                    <h5 class="mb-1 text-white">Email</h5>
+                    <p class="mb-0 text-light">uboracatalbas@gmail.com</p>
+                  </div>
                 </div>
+
+                <div class="contact-info">
+                  <i class="bi bi-telephone"></i>
+                  <div>
+                    <h5 class="mb-1 text-white">Phone</h5>
+                    <p class="mb-0 text-light">+00000000</p>
+                  </div>
+                </div>
+
+                <h4 class="mt-5 mb-3 text-white">Social Media</h4>
+                <div class="social-icons">            
+              
+                                   
+             
+                  <a     href="https://www.instagram.com/boracatalbass/" class="me-3"><i class="bi bi-instagram"></i></a>
+                  <a          href="https://www.linkedin.com/in/bora-çatalbaş-32888a219/" class="me-3"><i class="bi bi-linkedin"></i></a>
+                  <a     href="https://github.com/boracatalbas" class="me-3"><i class="bi bi-github"></i></a>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="card border-0 shadow-sm bg-dark">
+              <div class="card-body p-4">
+                <form>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="name" class="form-label text-white">Your Name</label>
+                      <input
+                        type="text"
+                        class="form-control bg-secondary text-white border-0"
+                        id="name"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="email" class="form-label text-white"
+                        >Your Email Address</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control bg-secondary text-white border-0"
+                        id="email"
+                        required
+                      />
+                    </div>
+                    <div class="col-12">
+                      <label for="subject" class="form-label text-white">Subject</label>
+                      <input
+                        type="text"
+                        class="form-control bg-secondary text-white border-0"
+                        id="subject"
+                        required
+                      />
+                    </div>
+                    <div class="col-12">
+                      <label for="message" class="form-label text-white">Your Message</label>
+                      <textarea
+                        class="form-control bg-secondary text-white border-0"
+                        id="message"
+                        rows="5"
+                        required
+                      ></textarea>
+                    </div>
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary px-4 py-3">
+                        Send Message
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-3 mb-md-0">
+          </div>
+            </div>
+            <p class="mb-0 text-center">© 2025 Bora Catalbas</p>
+          </div>
+        </div>
+      </div>
     </footer>
-    
+
     <!-- Bootstrap JS -->
     <script src="bootstrap-5.3.6-dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Internal Scripts -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Make hero section visible immediately
-            document.querySelector('#hero').classList.add('visible');
-            
-            // Section visibility on scroll
-            const sections = document.querySelectorAll('section');
-            
-            // Check element in viewport
-            function isInView(el) {
-                const rect = el.getBoundingClientRect();
-                return rect.top <= window.innerHeight * 0.75 && rect.bottom >= 0;
+      document.addEventListener("DOMContentLoaded", function () {
+        // Make hero section visible immediately
+        document.querySelector("#hero").classList.add("visible");
+
+        // Section visibility on scroll
+        const sections = document.querySelectorAll("section");
+
+        // Check element in viewport
+        function isInView(el) {
+          const rect = el.getBoundingClientRect();
+          return rect.top <= window.innerHeight * 0.75 && rect.bottom >= 0;
+        }
+
+        // Check all sections
+        function checkSections() {
+          sections.forEach((section) => {
+            if (isInView(section)) {
+              section.classList.add("visible");
             }
-            
-            // Check all sections
-            function checkSections() {
-                sections.forEach(section => {
-                    if (isInView(section)) {
-                        section.classList.add('visible');
-                    }
-                });
+          });
+        }
+
+        // Initialize and add scroll event
+        checkSections();
+        window.addEventListener("scroll", checkSections);
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            const target = document.querySelector(this.getAttribute("href"));
+
+            if (target) {
+              e.preventDefault();
+              const navHeight = document.querySelector(".navbar").offsetHeight;
+
+              window.scrollTo({
+                top: target.offsetTop - navHeight,
+                behavior: "smooth",
+              });
+
+    
+              document.querySelectorAll(".nav-link").forEach((link) => {
+                link.classList.remove("active");
+              });
+
+              const navLink = document.querySelector(
+                `.nav-link[href="${this.getAttribute("href")}"]`
+              );
+              if (navLink) navLink.classList.add("active");
             }
-            
-            // Initialize and add scroll event
-            checkSections();
-            window.addEventListener('scroll', checkSections);
-            
-            // Smooth scrolling
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const target = document.querySelector(this.getAttribute('href'));
-                    
-                    if (target) {
-                        e.preventDefault();
-                        const navHeight = document.querySelector('.navbar').offsetHeight;
-                        
-                        window.scrollTo({
-                            top: target.offsetTop - navHeight,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Update active nav
-                        document.querySelectorAll('.nav-link').forEach(link => {
-                            link.classList.remove('active');
-                        });
-                        
-                        const navLink = document.querySelector(`.nav-link[href="${this.getAttribute('href')}"]`);
-                        if (navLink) navLink.classList.add('active');
-                    }
-                });
-            });
-            
-            // Active nav on scroll
-            window.addEventListener('scroll', function() {
-                let current = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const navHeight = document.querySelector('.navbar').offsetHeight;
-                    
-                    if (pageYOffset >= (sectionTop - navHeight - 10)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-            
-            // Project filtering
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const projects = document.querySelectorAll('.project-item');
-            
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Set active button
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Filter projects
-                    const filter = this.getAttribute('data-filter');
-                    
-                    projects.forEach(project => {
-                        if (filter === 'all' || project.getAttribute('data-category') === filter) {
-                            project.style.display = 'block';
-                        } else {
-                            project.style.display = 'none';
-                        }
-                    });
-                });
-            });
-              // Fallback for old browsers that don't support smooth scroll
-            if (!('scrollBehavior' in document.documentElement.style)) {
-                // Add fallback scroll behavior if needed
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function(e) {
-                        const target = document.querySelector(this.getAttribute('href'));
-                        if (target) {
-                            e.preventDefault();
-                            const navHeight = document.querySelector('.navbar').offsetHeight;
-                            const targetPos = target.offsetTop - navHeight;
-                            window.scrollTo(0, targetPos);
-                        }
-                    });
-                });
-            }
+          });
         });
+
+     
+        window.addEventListener("scroll", function () {
+          let current = "";
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const navHeight = document.querySelector(".navbar").offsetHeight;
+
+            if (pageYOffset >= sectionTop - navHeight - 10) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          document.querySelectorAll(".nav-link").forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${current}`) {
+              link.classList.add("active");
+            }
+          });
+        });
+
+        // Project filtering
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const projects = document.querySelectorAll(".project-item");
+
+        filterBtns.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            // Set active button
+            filterBtns.forEach((b) => b.classList.remove("active"));
+            this.classList.add("active");
+
+            // Filter projects
+            const filter = this.getAttribute("data-filter");
+
+            projects.forEach((project) => {
+              if (
+                filter === "all" ||
+                project.getAttribute("data-category") === filter
+              ) {
+                project.style.display = "block";
+              } else {
+                project.style.display = "none";
+              }
+            });
+          });
+        });
+        // Fallback for old browsers that don't support smooth scroll
+        if (!("scrollBehavior" in document.documentElement.style)) {
+          // Add fallback scroll behavior if needed
+          document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+              const target = document.querySelector(this.getAttribute("href"));
+              if (target) {
+                e.preventDefault();
+                const navHeight =
+                  document.querySelector(".navbar").offsetHeight;
+                const targetPos = target.offsetTop - navHeight;
+                window.scrollTo(0, targetPos);
+              }
+            });
+          });
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
